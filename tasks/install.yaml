@@ -25,4 +25,4 @@
   with_items: "{{ virtualenv_build_depends }}"
   when: virtualenv_install_method == 'git' or virtualenv_install_method == 'pip'
 
-- include: "install/{{ virtualenv_install_method }}.yaml"
+- include_tasks: "install/{{ virtualenv_install_method }}.yaml"

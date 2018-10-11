@@ -15,7 +15,7 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yaml"
 
-- include: "{{ virtualenv_task }}.yaml"
+- include_tasks: "{{ virtualenv_task }}.yaml"
   with_items: "{{ virtualenv_task_manager }}"
   loop_control:
     loop_var: virtualenv_task
