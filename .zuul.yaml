@@ -1,0 +1,59 @@
+- job:
+    name: ansible-role-virtualenv-base
+    parent: unittests
+    pre-run: tests/playbooks/pre.yaml
+    run: tests/playbooks/run.yaml
+    roles:
+      - zuul: openstack/ansible-role-virtualenv
+
+# Testing for virtualenv_install_method: pip
+- job:
+    name: ansible-role-virtualenv
+    parent: ansible-role-virtualenv-base
+
+- job:
+    name: ansible-role-virtualenv-fedora-latest
+    parent: ansible-role-virtualenv
+    nodeset: fedora-latest
+
+- job:
+    name: ansible-role-virtualenv-ubuntu-bionic
+    parent: ansible-role-virtualenv
+    nodeset: ubuntu-bionic
+
+# Testing for virtualenv_install_method: git
+- job:
+    name: ansible-role-virtualenv-src
+    parent: ansible-role-virtualenv-base
+    vars:
+      virtualenv_git_update: false
+      virtualenv_install_method: git
+
+- job:
+    name: ansible-role-virtualenv-src-fedora-latest
+    parent: ansible-role-virtualenv-src
+    nodeset: fedora-latest
+
+- job:
+    name: ansible-role-virtualenv-src-ubuntu-bionic
+    parent: ansible-role-virtualenv-src
+    nodeset: ubuntu-bionic
+
+- project:
+    templates:
+      - windmill-jobs-fedora-latest
+      - windmill-jobs-bionic
+    check:
+      jobs:
+        - ansible-role-virtualenv-fedora-latest
+        - ansible-role-virtualenv-ubuntu-bionic
+        - ansible-role-virtualenv-src-fedora-latest
+        - ansible-role-virtualenv-src-ubuntu-bionic
+        - tox-linters
+    gate:
+      jobs:
+        - ansible-role-virtualenv-fedora-latest
+        - ansible-role-virtualenv-ubuntu-bionic
+        - ansible-role-virtualenv-src-fedora-latest
+        - ansible-role-virtualenv-src-ubuntu-bionic
+        - tox-linters
