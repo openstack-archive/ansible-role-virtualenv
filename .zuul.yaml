@@ -39,6 +39,23 @@
     parent: ansible-role-virtualenv-src
     nodeset: ubuntu-bionic
 
+# Testing for virtualenv_install_method: package
+- job:
+    name: ansible-role-virtualenv-pkg
+    parent: ansible-role-virtualenv-base
+    vars:
+      virtualenv_install_method: package
+
+- job:
+    name: ansible-role-virtualenv-pkg-fedora-latest
+    parent: ansible-role-virtualenv-pkg
+    nodeset: fedora-latest
+
+- job:
+    name: ansible-role-virtualenv-pkg-ubuntu-bionic
+    parent: ansible-role-virtualenv-pkg
+    nodeset: ubuntu-bionic
+
 - project:
     templates:
       - windmill-jobs-fedora-latest
@@ -47,6 +64,8 @@
       jobs:
         - ansible-role-virtualenv-fedora-latest
         - ansible-role-virtualenv-ubuntu-bionic
+        - ansible-role-virtualenv-pkg-fedora-latest
+        - ansible-role-virtualenv-pkg-ubuntu-bionic
         - ansible-role-virtualenv-src-fedora-latest
         - ansible-role-virtualenv-src-ubuntu-bionic
         - tox-linters
@@ -54,6 +73,8 @@
       jobs:
         - ansible-role-virtualenv-fedora-latest
         - ansible-role-virtualenv-ubuntu-bionic
+        - ansible-role-virtualenv-pkg-fedora-latest
+        - ansible-role-virtualenv-pkg-ubuntu-bionic
         - ansible-role-virtualenv-src-fedora-latest
         - ansible-role-virtualenv-src-ubuntu-bionic
         - tox-linters
