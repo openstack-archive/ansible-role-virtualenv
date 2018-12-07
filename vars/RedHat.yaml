@@ -14,3 +14,6 @@
 ---
 __virtualenv_build_depends:
   - git
+
+__virtualenv_package_name:
+  - python3-virtualenv

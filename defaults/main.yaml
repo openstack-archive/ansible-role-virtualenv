@@ -23,8 +23,6 @@ virtualenv_git_version: master
 
 virtualenv_install_method: pip
 
-virtualenv_package_name: python3-virtualenv
-
 virtualenv_pip_name: virtualenv
 #virtualenv_pip_extra_args:
 #virtualenv_pip_version:
