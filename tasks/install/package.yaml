@@ -1,4 +1,4 @@
-# Copyright 2015 Red Hat, Inc.
+# Copyright 2018 Red Hat, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,20 +12,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-# tasks/main.yaml
-virtualenv_task_manager:
-  - install
-
-# tasks/install.yaml
-virtualenv_git_dest: /opt/ansible-role-virtualenv/git/pypa/virtualenv
-virtualenv_git_uri: https://github.com/pypa/virtualenv
-virtualenv_git_version: master
-
-virtualenv_install_method: git
-
-virtualenv_package_name: python3-virtualenv
-
-virtualenv_pip_name: virtualenv
-#virtualenv_pip_extra_args:
-#virtualenv_pip_version:
-#virtualenv_pip_virtualenv:
+- name: Install virtualenv from package
+  become: yes
+  package:
+    name: "{{ virtualenv_package_name }}"
+    state: present
