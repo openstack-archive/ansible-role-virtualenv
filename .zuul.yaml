@@ -10,8 +10,6 @@
 - job:
     name: ansible-role-virtualenv
     parent: ansible-role-virtualenv-base
-    vars:
-      virtualenv_install_method: pip
 
 - job:
     name: ansible-role-virtualenv-fedora-latest

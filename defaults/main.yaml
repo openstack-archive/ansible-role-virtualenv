@@ -21,7 +21,7 @@ virtualenv_git_dest: /opt/ansible-role-virtualenv/git/pypa/virtualenv
 virtualenv_git_uri: https://github.com/pypa/virtualenv
 virtualenv_git_version: master
 
-virtualenv_install_method: git
+virtualenv_install_method: pip
 
 virtualenv_package_name: python3-virtualenv
 
