@@ -12,7 +12,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Install virtualenv using pip.
+- name: Install virtualenv using pip
   become: yes
   pip:
     extra_args: "{{ virtualenv_pip_extra_args|default(omit) }}"

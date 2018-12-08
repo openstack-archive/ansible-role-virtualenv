@@ -12,14 +12,14 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Git clone virtualenv.
+- name: Git clone virtualenv
   become: yes
   git:
     dest: "{{ virtualenv_git_dest }}"
     repo: "{{ virtualenv_git_uri }}"
     version: "{{ virtualenv_git_version }}"
 
-- name: Pip install virtualenv from local git repo.
+- name: Pip install virtualenv from local git repo
   become: yes
   pip:
     extra_args: "{{ virtualenv_pip_extra_args|default(omit) }}"

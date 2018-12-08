@@ -12,7 +12,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Define virtualenv_build_depends.
+- name: Define virtualenv_build_depends
   set_fact:
     virtualenv_build_depends: "{{ __virtualenv_build_depends | list }}"
   when: virtualenv_build_depends is not defined
