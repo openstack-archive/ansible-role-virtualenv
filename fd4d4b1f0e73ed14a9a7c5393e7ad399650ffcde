@@ -1,0 +1,8 @@
+Code-Review+2: Paul Belanger <pabelanger@redhat.com>
+Workflow+1: Paul Belanger <pabelanger@redhat.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 10 Dec 2018 20:51:08 +0000
+Reviewed-on: https://review.openstack.org/624155
+Project: openstack/ansible-role-virtualenv
+Branch: refs/heads/master
